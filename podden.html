@@ -3,49 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Podden</title>
+  <title>Podden – Danmarks podcast-platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=Archivo+Black&display=swap" rel="stylesheet">
   <style>
     :root {
-      --blue: #2951a3;
-      --blue-dark: #1e3d7e;
-      --blue-light: #3b6ec9;
-      --blue-pale: #eef2fb;
-      --white: #fff;
-      --bg: #f8f9fc;
-      --text: #0f172a;
-      --muted: #64748b;
-      --border: #e2e8f0;
+      --bg:       #07090f;
+      --bg2:      #0e1120;
+      --bg3:      #141728;
+      --accent:   #4f6ef7;
+      --accent2:  #7c94ff;
+      --white:    #ffffff;
+      --muted:    #8b93b0;
+      --border:   rgba(255,255,255,0.08);
+      --card-bg:  rgba(255,255,255,0.04);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: -apple-system, 'Inter', system-ui, sans-serif;
-      color: var(--text);
-      background: var(--white);
+      font-family: 'Archivo', sans-serif;
+      background: var(--bg);
+      color: var(--white);
       -webkit-font-smoothing: antialiased;
     }
 
-    /* NAV */
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
     nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 6%;
-      height: 64px;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      height: 70px;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 200;
+      background: rgba(7,9,15,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
     }
 
-    .logo img {
-      height: 44px;
-      width: auto;
-      display: block;
-    }
+    .logo img { height: 42px; width: auto; display: block; }
 
     .nav-links {
       display: flex;
@@ -53,461 +53,466 @@
       list-style: none;
     }
     .nav-links a {
-      text-decoration: none;
-      color: var(--muted);
       font-size: 0.88rem;
-      font-weight: 500;
-      transition: color 0.15s;
+      font-weight: 600;
+      color: var(--muted);
+      transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover { color: var(--white); }
 
-    .nav-right { display: flex; gap: 0.6rem; align-items: center; }
+    .nav-right { display: flex; gap: 0.75rem; align-items: center; }
 
     .btn {
-      padding: 0.5rem 1.1rem;
+      padding: 0.55rem 1.25rem;
       border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.88rem;
+      font-weight: 700;
       cursor: pointer;
-      text-decoration: none;
-      transition: all 0.15s;
+      transition: all 0.18s;
       border: none;
       display: inline-block;
+      font-family: 'Archivo', sans-serif;
     }
-    .btn-ghost { color: var(--muted); background: transparent; }
-    .btn-ghost:hover { color: var(--text); background: var(--bg); }
-    .btn-blue { background: var(--blue); color: #fff; }
-    .btn-blue:hover { background: var(--blue-dark); }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--accent2); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1.5px solid var(--border);
+    }
+    .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.25); }
+    .btn-lg { padding: 0.85rem 2rem; font-size: 1rem; border-radius: 10px; }
 
-    /* HERO */
+    /* ── HERO ── */
     .hero {
-      padding: 100px 6% 90px;
-      text-align: center;
-      background: var(--white);
-      position: relative;
-      overflow: hidden;
+      padding: 130px 5% 100px;
+      max-width: 900px;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -200px; left: 50%;
-      transform: translateX(-50%);
-      width: 800px; height: 800px;
-      background: radial-gradient(circle, rgba(41,81,163,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .waveform {
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .waveform svg {
-      position: absolute;
-      top: 50%; left: 0;
-      transform: translateY(-50%);
-      width: 200%; height: 80%;
-      opacity: 0.08;
-      animation: wavescroll 18s linear infinite;
-    }
-    .waveform svg:nth-child(2) {
-      opacity: 0.05;
-      animation-duration: 26s;
-      animation-direction: reverse;
-    }
-    .waveform svg:nth-child(3) {
-      opacity: 0.04;
-      animation-duration: 34s;
-    }
-    @keyframes wavescroll {
-      from { transform: translateY(-50%) translateX(0); }
-      to   { transform: translateY(-50%) translateX(-50%); }
-    }
-
-    .hero-chip {
+    .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      background: var(--blue-pale);
-      color: var(--blue);
+      gap: 0.5rem;
+      background: rgba(79,110,247,0.15);
+      border: 1px solid rgba(79,110,247,0.3);
+      color: var(--accent2);
       border-radius: 50px;
-      padding: 0.3rem 0.9rem;
+      padding: 0.35rem 1rem;
       font-size: 0.78rem;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.5px;
       margin-bottom: 2rem;
-      letter-spacing: 0.2px;
     }
 
     .hero h1 {
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 900;
-      line-height: 1.05;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 1.0;
       letter-spacing: -2px;
-      margin-bottom: 1.25rem;
-      color: var(--text);
+      margin-bottom: 1.5rem;
+      color: var(--white);
     }
 
-    .hero h1 em {
-      font-style: normal;
-      color: var(--blue);
+    .hero h1 .highlight {
+      color: var(--accent);
     }
 
     .hero p {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: var(--muted);
-      max-width: 480px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.65;
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
     }
 
     .hero-actions {
       display: flex;
-      gap: 0.75rem;
-      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
-    .btn-lg {
-      padding: 0.8rem 1.8rem;
-      font-size: 0.95rem;
-      border-radius: 10px;
-    }
-
-    .btn-outline {
-      border: 1.5px solid var(--border);
-      color: var(--text);
-      background: transparent;
-    }
-    .btn-outline:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-pale); }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 0;
-      margin-top: 5rem;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      max-width: 640px;
-      margin-left: auto;
-      margin-right: auto;
-      overflow: hidden;
-    }
-    .stat {
-      flex: 1;
-      padding: 1.5rem 1rem;
-      border-right: 1px solid var(--border);
-      text-align: center;
-    }
-    .stat:last-child { border-right: none; }
-    .stat-num {
-      font-size: 1.7rem;
-      font-weight: 800;
-      color: var(--blue);
-      letter-spacing: -0.5px;
-    }
-    .stat-label {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-
-    /* BRANDS */
-    .brands {
-      padding: 2.5rem 6%;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    .trustpilot {
       display: flex;
       align-items: center;
-      gap: 3rem;
-      justify-content: center;
-      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 2.5rem;
     }
-    .brands-label { font-size: 0.75rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-    .brand-name { font-size: 0.85rem; font-weight: 700; color: #c0cad8; letter-spacing: 0.5px; }
+    .stars { color: #00b67a; font-size: 1rem; }
 
-    /* SECTIONS */
-    section { padding: 90px 6%; }
+    /* ── STAT BAR ── */
+    .stat-bar {
+      display: flex;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+    }
+    .stat-item {
+      flex: 1;
+      padding: 2.25rem 5%;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 2.6rem;
+      letter-spacing: -1px;
+      color: var(--white);
+    }
+    .stat-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
 
-    .tag {
+    /* ── BRANDS ── */
+    .brands {
+      padding: 3rem 5%;
+      border-bottom: 1px solid var(--border);
+    }
+    .brands-label {
       font-size: 0.72rem;
       font-weight: 700;
-      color: var(--blue);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 0.75rem;
-    }
-    h2 {
-      font-size: clamp(1.75rem, 3vw, 2.4rem);
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      line-height: 1.15;
-    }
-    .sub {
-      font-size: 1rem;
       color: var(--muted);
-      margin-top: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.75rem;
+    }
+    .brands-row {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .brand-name {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.18);
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
-    /* STEPS */
-    .steps-section { background: var(--bg); }
+    /* ── SECTIONS ── */
+    section { padding: 100px 5%; }
+
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 480px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { background: var(--bg2); }
     .steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1.5px;
-      margin-top: 3.5rem;
+      gap: 1px;
       background: var(--border);
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
+      margin-top: 3.5rem;
     }
     .step {
-      background: var(--white);
-      padding: 2.25rem 1.75rem;
+      background: var(--bg2);
+      padding: 2.5rem 2rem;
     }
     .step-num {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      color: var(--blue);
-      letter-spacing: 1px;
-      margin-bottom: 1.25rem;
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
     }
-    .step-icon { font-size: 1.6rem; margin-bottom: 1rem; }
-    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .step p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+    .step-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .step h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .step p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
 
-    /* FEATURES */
-    .features-section { background: var(--white); }
-    .features-layout {
+    /* ── FEATURES ── */
+    .features-section { background: var(--bg); }
+    .features-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .feat-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      margin-top: 3.5rem;
-    }
-    .features-list { display: flex; flex-direction: column; gap: 1.75rem; }
-    .feat {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    .feat-icon {
-      width: 40px; height: 40px;
-      background: var(--blue-pale);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-    .feat-text h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-    .feat-text p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
-
-    .features-visual {
-      background: linear-gradient(135deg, var(--blue-dark), var(--blue-light));
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5px;
+      background: var(--border);
       border-radius: 20px;
-      height: 380px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 1rem;
-      color: white;
-      position: relative;
       overflow: hidden;
     }
-    .features-visual::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 250px; height: 250px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 50%;
+    .feat-card {
+      background: var(--bg3);
+      padding: 2.5rem;
+      transition: background 0.2s;
     }
-    .visual-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 14px;
-      padding: 1rem 1.5rem;
-      backdrop-filter: blur(8px);
-      width: 240px;
+    .feat-card:hover { background: #1a2040; }
+    .feat-card-icon {
+      width: 48px; height: 48px;
+      background: rgba(79,110,247,0.15);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
     }
-    .visual-card-label { font-size: 0.7rem; opacity: 0.7; margin-bottom: 0.3rem; }
-    .visual-card-val { font-size: 1.5rem; font-weight: 800; }
-    .visual-bar { height: 4px; background: rgba(255,255,255,0.2); border-radius: 4px; margin-top: 0.6rem; }
-    .visual-bar-fill { height: 100%; background: white; border-radius: 4px; width: 72%; }
+    .feat-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .feat-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
 
-    /* PODCASTS */
-    .podcasts-section { background: var(--bg); }
-    .podcast-grid {
+    /* ── PODCASTS ── */
+    .podcasts-section { background: var(--bg2); }
+    .podcasts-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .podcast-scroll {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 1rem;
-      margin-top: 3rem;
     }
     .podcast-card {
-      background: var(--white);
+      background: var(--bg3);
       border-radius: 14px;
       overflow: hidden;
       border: 1px solid var(--border);
+      transition: transform 0.2s, border-color 0.2s;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
     }
     .podcast-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(41,81,163,0.12);
+      transform: translateY(-5px);
+      border-color: rgba(79,110,247,0.4);
     }
     .podcast-thumb {
-      height: 110px;
+      height: 120px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
-    .podcast-info { padding: 0.85rem; }
-    .podcast-info h4 { font-size: 0.82rem; font-weight: 700; }
-    .podcast-info .cat { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
-    .podcast-info .count { font-size: 0.7rem; color: var(--blue); font-weight: 600; margin-top: 5px; }
+    .podcast-info { padding: 1rem; }
+    .podcast-info h4 { font-size: 0.85rem; font-weight: 700; }
+    .podcast-cat { font-size: 0.73rem; color: var(--muted); margin-top: 3px; }
+    .podcast-count { font-size: 0.72rem; color: var(--accent2); font-weight: 600; margin-top: 6px; }
 
-    .section-footer { text-align: center; margin-top: 2.5rem; }
-
-    /* PRICING */
-    .pricing-section { background: var(--white); text-align: center; }
+    /* ── PRICING ── */
+    .pricing-section { background: var(--bg); text-align: center; }
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
-      max-width: 860px;
-      margin: 3rem auto 0;
+      max-width: 900px;
+      margin: 3.5rem auto 0;
+      text-align: left;
     }
     .price-card {
-      border-radius: 18px;
-      padding: 2rem 1.75rem;
-      border: 1.5px solid var(--border);
-      text-align: left;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.25rem;
       position: relative;
-      transition: box-shadow 0.2s;
+      transition: border-color 0.2s;
     }
-    .price-card:hover { box-shadow: 0 8px 32px rgba(41,81,163,0.1); }
-    .price-card.highlight {
-      border-color: var(--blue);
-      background: var(--blue);
-      color: white;
+    .price-card:hover { border-color: rgba(79,110,247,0.4); }
+    .price-card.featured {
+      background: var(--accent);
+      border-color: var(--accent);
     }
-    .pill {
-      position: absolute; top: -12px; left: 50%;
+    .popular-badge {
+      position: absolute;
+      top: -13px; left: 50%;
       transform: translateX(-50%);
-      background: var(--blue-dark);
-      color: white;
-      font-size: 0.68rem; font-weight: 700;
-      padding: 0.25rem 0.8rem;
+      background: var(--white);
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.25rem 0.9rem;
       border-radius: 50px;
+      white-space: nowrap;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      white-space: nowrap;
     }
-    .price-card.highlight .pill { background: white; color: var(--blue); }
-    .price-tier { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.65; }
-    .price-amount { font-size: 2.5rem; font-weight: 900; letter-spacing: -1px; margin: 0.6rem 0 0.2rem; }
-    .price-amount small { font-size: 0.85rem; font-weight: 400; opacity: 0.6; }
-    .price-divider { height: 1px; background: var(--border); margin: 1.25rem 0; }
-    .price-card.highlight .price-divider { background: rgba(255,255,255,0.2); }
-    .price-features { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.75rem; }
-    .price-features li { font-size: 0.85rem; display: flex; gap: 0.5rem; align-items: center; }
-    .price-features li::before { content: "✓"; font-weight: 700; color: var(--blue); }
-    .price-card.highlight .price-features li::before { color: rgba(255,255,255,0.8); }
-    .price-btn { display: block; text-align: center; padding: 0.7rem; border-radius: 9px; font-size: 0.88rem; font-weight: 700; text-decoration: none; transition: all 0.15s; }
-    .price-btn-outline { border: 1.5px solid var(--border); color: var(--text); }
-    .price-btn-outline:hover { border-color: var(--blue); color: var(--blue); }
-    .price-btn-white { background: white; color: var(--blue); }
-    .price-btn-white:hover { background: var(--blue-pale); }
+    .price-tier {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .price-card.featured .price-tier { color: rgba(255,255,255,0.7); }
+    .price-amount {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 2.75rem;
+      letter-spacing: -1px;
+      margin-bottom: 0.25rem;
+    }
+    .price-per { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .price-card.featured .price-per { color: rgba(255,255,255,0.7); }
+    .price-divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
+    .price-card.featured .price-divider { background: rgba(255,255,255,0.2); }
+    .price-feats { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 2rem; }
+    .price-feats li { font-size: 0.875rem; display: flex; gap: 0.6rem; align-items: center; }
+    .price-feats li::before { content: "✓"; font-weight: 900; color: var(--accent2); flex-shrink: 0; }
+    .price-card.featured .price-feats li::before { color: rgba(255,255,255,0.8); }
+    .price-cta {
+      display: block;
+      text-align: center;
+      padding: 0.8rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: all 0.18s;
+    }
+    .price-cta-outline {
+      border: 1.5px solid var(--border);
+      color: var(--white);
+    }
+    .price-cta-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .price-cta-white { background: var(--white); color: var(--accent); }
+    .price-cta-white:hover { opacity: 0.9; }
 
-    /* QUOTES */
-    .quotes-section { background: var(--bg); }
-    .quotes-grid {
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background: var(--bg2); }
+    .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
-      margin-top: 3rem;
+      margin-top: 3.5rem;
     }
-    .quote-card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 1.75rem;
+    .testimonial-card {
+      background: var(--bg3);
       border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem;
     }
-    .quote-stars { color: #f59e0b; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1rem; }
-    .quote-text { font-size: 0.9rem; line-height: 1.65; color: var(--text); margin-bottom: 1.25rem; }
-    .quote-author { display: flex; align-items: center; gap: 0.65rem; }
-    .quote-avatar {
-      width: 36px; height: 36px;
-      background: var(--blue);
+    .t-stars { color: #00b67a; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1.25rem; }
+    .t-text { font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; }
+    .t-author { display: flex; align-items: center; gap: 0.75rem; }
+    .t-avatar {
+      width: 40px; height: 40px;
+      background: var(--accent);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem; font-weight: 700; color: white;
+      font-size: 0.8rem; font-weight: 800;
     }
-    .quote-name { font-size: 0.83rem; font-weight: 700; }
-    .quote-role { font-size: 0.75rem; color: var(--muted); }
+    .t-name { font-size: 0.875rem; font-weight: 700; }
+    .t-role { font-size: 0.775rem; color: var(--muted); }
 
-    /* CTA */
+    /* ── CTA BANNER ── */
     .cta-section {
-      background: var(--blue);
-      color: white;
+      background: linear-gradient(135deg, #1a2a6e 0%, #0f1a55 50%, #07090f 100%);
       text-align: center;
-      padding: 100px 6%;
+      padding: 130px 5%;
       position: relative;
       overflow: hidden;
     }
     .cta-section::before {
       content: '';
       position: absolute;
-      bottom: -100px; right: -100px;
-      width: 400px; height: 400px;
-      background: rgba(255,255,255,0.04);
-      border-radius: 50%;
+      top: -150px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(79,110,247,0.18) 0%, transparent 65%);
+      pointer-events: none;
     }
-    .cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -1px; margin-bottom: 0.75rem; }
-    .cta-section p { opacity: 0.75; font-size: 1rem; margin-bottom: 2.5rem; }
-    .cta-btns { display: flex; gap: 0.75rem; justify-content: center; }
-    .btn-white-solid { background: white; color: var(--blue); font-weight: 700; }
-    .btn-white-solid:hover { background: var(--blue-pale); }
-    .btn-white-outline { border: 1.5px solid rgba(255,255,255,0.4); color: white; background: transparent; }
-    .btn-white-outline:hover { background: rgba(255,255,255,0.1); }
+    .cta-section h2 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+    }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
-      background: #0a0f1e;
-      color: rgba(255,255,255,0.5);
-      padding: 3rem 6% 2rem;
+      background: #030508;
+      padding: 4rem 5% 2.5rem;
+      border-top: 1px solid var(--border);
     }
     .footer-top {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 2rem;
-      margin-bottom: 2.5rem;
+      gap: 3rem;
+      margin-bottom: 3rem;
       flex-wrap: wrap;
     }
-    .footer-logo { font-size: 1.3rem; font-weight: 800; color: white; letter-spacing: -0.5px; }
-    .footer-links { display: flex; gap: 3rem; }
-    .footer-col h5 { color: rgba(255,255,255,0.8); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.85rem; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .footer-col a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.83rem; transition: color 0.15s; }
-    .footer-col a:hover { color: white; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 1.5rem; font-size: 0.78rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
-
-    @media (max-width: 900px) {
-      .steps { grid-template-columns: 1fr 1fr; }
-      .podcast-grid { grid-template-columns: repeat(3, 1fr); }
-      .features-layout { grid-template-columns: 1fr; }
-      .features-visual { display: none; }
-      .pricing-grid { grid-template-columns: 1fr; max-width: 380px; }
-      .quotes-grid { grid-template-columns: 1fr; }
+    .footer-logo img { height: 38px; filter: brightness(0) invert(1); opacity: 0.9; }
+    .footer-links { display: flex; gap: 4rem; flex-wrap: wrap; }
+    .footer-col h5 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.1rem;
     }
-    @media (max-width: 600px) {
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-col a { font-size: 0.875rem; color: rgba(255,255,255,0.35); transition: color 0.15s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.25);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .podcast-scroll { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 700px) {
       .nav-links { display: none; }
+      .feat-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .podcast-scroll { grid-template-columns: repeat(2, 1fr); }
       .steps { grid-template-columns: 1fr; }
-      .podcast-grid { grid-template-columns: repeat(2, 1fr); }
-      .hero-stats { flex-direction: column; border: none; gap: 1rem; }
-      .stat { border: 1px solid var(--border); border-radius: 12px; }
-      .footer-links { flex-direction: column; gap: 1.5rem; }
+      .stat-bar { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .footer-links { flex-direction: column; gap: 2rem; }
     }
   </style>
 </head>
@@ -517,295 +522,278 @@
 <nav>
   <div class="logo"><img src="podden-logo.svg" alt="Podden"></div>
   <ul class="nav-links">
-    <li><a href="#">Om Podden</a></li>
-    <li><a href="#">Produkter</a></li>
+    <li><a href="#">Monetér</a></li>
+    <li><a href="#">Funktioner</a></li>
+    <li><a href="#">Priser</a></li>
     <li><a href="#">Cases</a></li>
-    <li><a href="#">Kontakt</a></li>
+    <li><a href="#">Annoncér</a></li>
   </ul>
   <div class="nav-right">
-    <a href="#" class="btn btn-blue">Kom i gang</a>
+    <a href="#" class="btn btn-ghost">Kontakt</a>
+    <a href="#" class="btn btn-primary">Kom i gang</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="waveform">
-    <!-- Wave 1: large, slow -->
-    <svg viewBox="0 0 2880 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill="none" stroke="#2951a3" stroke-width="3" stroke-linecap="round"
-        d="M0,150 C120,80 240,220 360,150 C480,80 600,220 720,150 C840,80 960,220 1080,150 C1200,80 1320,220 1440,150 C1560,80 1680,220 1800,150 C1920,80 2040,220 2160,150 C2280,80 2400,220 2520,150 C2640,80 2760,220 2880,150"/>
-    </svg>
-    <!-- Wave 2: medium height, offset phase -->
-    <svg viewBox="0 0 2880 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill="none" stroke="#2951a3" stroke-width="2" stroke-linecap="round"
-        d="M0,150 C180,60 360,240 540,150 C720,60 900,240 1080,150 C1260,60 1440,240 1620,150 C1800,60 1980,240 2160,150 C2340,60 2520,240 2700,150 C2880,60 2880,150 2880,150"/>
-    </svg>
-    <!-- Wave 3: subtle, slower -->
-    <svg viewBox="0 0 2880 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill="none" stroke="#2951a3" stroke-width="1.5" stroke-linecap="round"
-        d="M0,150 C240,100 480,200 720,150 C960,100 1200,200 1440,150 C1680,100 1920,200 2160,150 C2400,100 2640,200 2880,150"/>
-    </svg>
-  </div>
-  <div class="hero-chip">🎙 Danmarks #1 podcast-annonceplatform</div>
-  <h1>Nå lytterne<br>der, hvor de er</h1>
-  <p>Forbind dit brand med de rigtige podcasts – og mål resultaterne i realtid.</p>
+<div class="hero">
+  <div class="hero-badge">🎙 Danmarks #1 podcast-platform</div>
+  <h1>Nå lytterne<br><span class="highlight">der, hvor<br>de er</span></h1>
+  <p>Forbind dit brand med de rigtige podcasts og lyttere – og mål resultaterne i realtid.</p>
   <div class="hero-actions">
-    <a href="#" class="btn btn-blue btn-lg">Start gratis</a>
-    <a href="#" class="btn btn-outline btn-lg">Se markedspladsen</a>
+    <a href="#" class="btn btn-primary btn-lg">Start gratis i dag</a>
+    <a href="#" class="btn btn-ghost btn-lg">Se markedspladsen</a>
   </div>
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num">850+</div>
-      <div class="stat-label">Aktive podcasts</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">4,2M</div>
-      <div class="stat-label">Månedlige lyttere</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">320+</div>
-      <div class="stat-label">Brands</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">98%</div>
-      <div class="stat-label">Tilfredshed</div>
-    </div>
+  <div class="trustpilot">
+    <span class="stars">★★★★★</span>
+    <span>Vurderet fremragende på Trustpilot · 4,8/5</span>
   </div>
-</section>
+</div>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-item">
+    <div class="stat-num">850+</div>
+    <div class="stat-desc">Aktive podcasts</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">4,2M</div>
+    <div class="stat-desc">Månedlige lyttere</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">320+</div>
+    <div class="stat-desc">Samarbejdsbrands</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">98%</div>
+    <div class="stat-desc">Tilfredshed</div>
+  </div>
+</div>
 
 <!-- BRANDS -->
 <div class="brands">
-  <span class="brands-label">Betroet af</span>
-  <span class="brand-name">ØRSTED</span>
-  <span class="brand-name">NOVO NORDISK</span>
-  <span class="brand-name">SAXO BANK</span>
-  <span class="brand-name">MATAS</span>
-  <span class="brand-name">TRYG</span>
-  <span class="brand-name">ARLA</span>
+  <div class="brands-label">Betroet af</div>
+  <div class="brands-row">
+    <span class="brand-name">Ørsted</span>
+    <span class="brand-name">Novo Nordisk</span>
+    <span class="brand-name">Saxo Bank</span>
+    <span class="brand-name">Matas</span>
+    <span class="brand-name">Tryg</span>
+    <span class="brand-name">Arla</span>
+  </div>
 </div>
 
-<!-- STEPS -->
-<section class="steps-section">
-  <div class="tag">Sådan virker det</div>
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="section-tag">Sådan virker det</div>
   <h2>Live på 48 timer</h2>
+  <p class="section-sub">Fra oprettelse til resultater – hurtigere end du tror.</p>
   <div class="steps">
     <div class="step">
       <div class="step-num">01</div>
       <div class="step-icon">📋</div>
       <h3>Opret kampagne</h3>
-      <p>Beskriv dit brand og budget.</p>
+      <p>Beskriv dit brand, mål og budget på få minutter.</p>
     </div>
     <div class="step">
-      <div class="step-icon">🎯</div>
       <div class="step-num">02</div>
+      <div class="step-icon">🎯</div>
       <h3>Match med podcasts</h3>
-      <p>Vi finder de rette lyttere til dig.</p>
+      <p>Vi finder de podcasts der rammer dine lyttere præcist.</p>
     </div>
     <div class="step">
-      <div class="step-icon">🎙️</div>
       <div class="step-num">03</div>
+      <div class="step-icon">🎙️</div>
       <h3>Gå i luften</h3>
-      <p>Godkend og lancér din annonce.</p>
+      <p>Godkend scripts og lancér din annonce med ét klik.</p>
     </div>
     <div class="step">
-      <div class="step-icon">📊</div>
       <div class="step-num">04</div>
+      <div class="step-icon">📊</div>
       <h3>Mål resultater</h3>
-      <p>Følg klik og konverteringer live.</p>
+      <p>Følg klik, lyttere og konverteringer live i dashboardet.</p>
     </div>
   </div>
 </section>
 
 <!-- FEATURES -->
 <section class="features-section">
-  <div class="tag">Funktioner</div>
-  <h2>Alt hvad du behøver</h2>
-  <div class="features-layout">
-    <div class="features-list">
-      <div class="feat">
-        <div class="feat-icon">🎯</div>
-        <div class="feat-text">
-          <h3>Præcis målretning</h3>
-          <p>Segment på interesser, demografi og lyttevaner.</p>
-        </div>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">📊</div>
-        <div class="feat-text">
-          <h3>Realtids-analytics</h3>
-          <p>Spor lyttertal, klik og konverteringer live.</p>
-        </div>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">🤝</div>
-        <div class="feat-text">
-          <h3>Direkte samarbejde</h3>
-          <p>Godkend scripts og optagelser direkte i platformen.</p>
-        </div>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">🔒</div>
-        <div class="feat-text">
-          <h3>Brand safety</h3>
-          <p>Dit brand optræder kun i gennemtjekket indhold.</p>
-        </div>
-      </div>
+  <div class="features-header">
+    <div>
+      <div class="section-tag">Funktioner</div>
+      <h2>Alt hvad du behøver</h2>
     </div>
-    <div class="features-visual">
-      <div class="visual-card">
-        <div class="visual-card-label">Lyttere denne uge</div>
-        <div class="visual-card-val">142.800</div>
-        <div class="visual-bar"><div class="visual-bar-fill"></div></div>
-      </div>
-      <div class="visual-card" style="opacity:0.7">
-        <div class="visual-card-label">Konverteringsrate</div>
-        <div class="visual-card-val">3,4%</div>
-        <div class="visual-bar"><div class="visual-bar-fill" style="width:34%"></div></div>
-      </div>
+    <p class="section-sub">En komplet platform til annoncører og podcastere.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-card-icon">🎯</div>
+      <h3>Præcis målretning</h3>
+      <p>Segment på interesser, demografi og lyttevaner – og nå præcis den målgruppe, der konverterer for dit brand.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-card-icon">📊</div>
+      <h3>Realtids-analytics</h3>
+      <p>Se lyttertal, klik og konverteringer opdatere sig live i dit dashboard – ingen ventetid, fuld kontrol.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-card-icon">🤝</div>
+      <h3>Direkte samarbejde</h3>
+      <p>Godkend scripts og optagelser direkte i platformen. Kommunikér med podcasteren i realtid.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-card-icon">🔒</div>
+      <h3>Brand safety</h3>
+      <p>Dit brand optræder kun i gennemtjekket indhold. Vi sikrer, at konteksten altid er den rette.</p>
     </div>
   </div>
 </section>
 
 <!-- PODCASTS -->
 <section class="podcasts-section">
-  <div class="tag">Markedsplads</div>
-  <h2>Udvalgte podcasts</h2>
-  <div class="podcast-grid">
+  <div class="podcasts-header">
+    <div>
+      <div class="section-tag">Markedsplads</div>
+      <h2>Udvalgte podcasts</h2>
+    </div>
+    <a href="#" class="btn btn-ghost">Se alle podcasts →</a>
+  </div>
+  <div class="podcast-scroll">
     <div class="podcast-card">
-      <div class="podcast-thumb" style="background:#dbeafe">🏢</div>
+      <div class="podcast-thumb" style="background:#1a2563">🏢</div>
       <div class="podcast-info">
         <h4>Iværksætteriet</h4>
-        <div class="cat">Business</div>
-        <div class="count">82K lyttere/ep.</div>
+        <div class="podcast-cat">Business</div>
+        <div class="podcast-count">82K lyttere/ep.</div>
       </div>
     </div>
     <div class="podcast-card">
-      <div class="podcast-thumb" style="background:#ede9fe">🧠</div>
+      <div class="podcast-thumb" style="background:#1e1a40">🧠</div>
       <div class="podcast-info">
         <h4>Mindset DK</h4>
-        <div class="cat">Personlig udvikling</div>
-        <div class="count">64K lyttere/ep.</div>
+        <div class="podcast-cat">Personlig udvikling</div>
+        <div class="podcast-count">64K lyttere/ep.</div>
       </div>
     </div>
     <div class="podcast-card">
-      <div class="podcast-thumb" style="background:#d1fae5">🌿</div>
+      <div class="podcast-thumb" style="background:#0f2a1a">🌿</div>
       <div class="podcast-info">
         <h4>Grøn Fremtid</h4>
-        <div class="cat">Bæredygtighed</div>
-        <div class="count">41K lyttere/ep.</div>
+        <div class="podcast-cat">Bæredygtighed</div>
+        <div class="podcast-count">41K lyttere/ep.</div>
       </div>
     </div>
     <div class="podcast-card">
-      <div class="podcast-thumb" style="background:#fee2e2">🎤</div>
+      <div class="podcast-thumb" style="background:#2a0f0f">🎤</div>
       <div class="podcast-info">
         <h4>True Crime DK</h4>
-        <div class="cat">Krimi</div>
-        <div class="count">115K lyttere/ep.</div>
+        <div class="podcast-cat">Krimi</div>
+        <div class="podcast-count">115K lyttere/ep.</div>
       </div>
     </div>
     <div class="podcast-card">
-      <div class="podcast-thumb" style="background:#fef3c7">📈</div>
+      <div class="podcast-thumb" style="background:#1a2a0f">📈</div>
       <div class="podcast-info">
         <h4>Investor Podcast</h4>
-        <div class="cat">Finans</div>
-        <div class="count">58K lyttere/ep.</div>
+        <div class="podcast-cat">Finans</div>
+        <div class="podcast-count">58K lyttere/ep.</div>
       </div>
     </div>
     <div class="podcast-card">
-      <div class="podcast-thumb" style="background:#e0f2fe">🏃</div>
+      <div class="podcast-thumb" style="background:#0f1a2a">🏃</div>
       <div class="podcast-info">
         <h4>Sund & Stærk</h4>
-        <div class="cat">Sundhed</div>
-        <div class="count">73K lyttere/ep.</div>
+        <div class="podcast-cat">Sundhed</div>
+        <div class="podcast-count">73K lyttere/ep.</div>
       </div>
     </div>
-  </div>
-  <div class="section-footer">
-    <a href="#" class="btn btn-blue btn-lg">Se alle podcasts</a>
   </div>
 </section>
 
 <!-- PRICING -->
 <section class="pricing-section">
-  <div class="tag">Priser</div>
+  <div class="section-tag">Priser</div>
   <h2>Simpel prissætning</h2>
+  <p class="section-sub" style="margin: 0 auto;">Ingen skjulte gebyrer. Start gratis, skalér når du er klar.</p>
   <div class="pricing-grid">
     <div class="price-card">
       <div class="price-tier">Starter</div>
-      <div class="price-amount">0 kr<small>/md</small></div>
+      <div class="price-amount">0 kr</div>
+      <div class="price-per">per måned</div>
       <div class="price-divider"></div>
-      <ul class="price-features">
+      <ul class="price-feats">
         <li>3 aktive kampagner</li>
         <li>Adgang til markedspladsen</li>
         <li>Basis-analytics</li>
         <li>E-mail support</li>
       </ul>
-      <a href="#" class="price-btn price-btn-outline">Kom gratis i gang</a>
+      <a href="#" class="price-cta price-cta-outline">Kom gratis i gang</a>
     </div>
-    <div class="price-card highlight">
-      <div class="pill">Mest populær</div>
+    <div class="price-card featured">
+      <div class="popular-badge">Mest populær</div>
       <div class="price-tier">Pro</div>
-      <div class="price-amount">1.499 kr<small>/md</small></div>
+      <div class="price-amount">1.499 kr</div>
+      <div class="price-per">per måned</div>
       <div class="price-divider"></div>
-      <ul class="price-features">
+      <ul class="price-feats">
         <li>Ubegrænsede kampagner</li>
         <li>Avanceret målretning</li>
         <li>Realtids-analytics</li>
         <li>Direkte podcastkontakt</li>
         <li>Prioriteret support</li>
       </ul>
-      <a href="#" class="price-btn price-btn-white">Vælg Pro</a>
+      <a href="#" class="price-cta price-cta-white">Vælg Pro</a>
     </div>
     <div class="price-card">
       <div class="price-tier">Enterprise</div>
-      <div class="price-amount" style="font-size:1.8rem">På forespørgsel</div>
+      <div class="price-amount" style="font-size:2rem;letter-spacing:-0.5px">På forespørgsel</div>
+      <div class="price-per"> </div>
       <div class="price-divider"></div>
-      <ul class="price-features">
+      <ul class="price-feats">
         <li>Alt i Pro</li>
         <li>Dedikeret account manager</li>
         <li>Custom integrationer</li>
         <li>SLA-garanti</li>
       </ul>
-      <a href="#" class="price-btn price-btn-outline">Kontakt os</a>
+      <a href="#" class="price-cta price-cta-outline">Kontakt os</a>
     </div>
   </div>
 </section>
 
-<!-- QUOTES -->
-<section class="quotes-section">
-  <div class="tag">Kunderne siger</div>
-  <h2>De er glade for det</h2>
-  <div class="quotes-grid">
-    <div class="quote-card">
-      <div class="quote-stars">★★★★★</div>
-      <p class="quote-text">"Vi tredoblet vores brand awareness på tre måneder."</p>
-      <div class="quote-author">
-        <div class="quote-avatar">MH</div>
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-tag">Kunderne siger</div>
+  <h2>Resultater der taler</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">"Vi tredoblet vores brand awareness på tre måneder. Podden leverede langt over forventningerne."</p>
+      <div class="t-author">
+        <div class="t-avatar">MH</div>
         <div>
-          <div class="quote-name">Maria Henriksen</div>
-          <div class="quote-role">CMO, NordicShop</div>
+          <div class="t-name">Maria Henriksen</div>
+          <div class="t-role">CMO, NordicShop</div>
         </div>
       </div>
     </div>
-    <div class="quote-card">
-      <div class="quote-stars">★★★★★</div>
-      <p class="quote-text">"Vores podcast-indtjening er steget med 180% siden vi kom på platformen."</p>
-      <div class="quote-author">
-        <div class="quote-avatar">JL</div>
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">"Vores podcast-indtjening er steget med 180% siden vi kom på platformen. Det er simpelthen fantastisk."</p>
+      <div class="t-author">
+        <div class="t-avatar">JL</div>
         <div>
-          <div class="quote-name">Jonas Larsen</div>
-          <div class="quote-role">Vært, Investor Podcast</div>
+          <div class="t-name">Jonas Larsen</div>
+          <div class="t-role">Vært, Investor Podcast</div>
         </div>
       </div>
     </div>
-    <div class="quote-card">
-      <div class="quote-stars">★★★★★</div>
-      <p class="quote-text">"ROI er klart målbar. Vi vil aldrig annoncere anderledes."</p>
-      <div class="quote-author">
-        <div class="quote-avatar">SR</div>
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">"ROI er klart og målbar. Podden er nu en fast del af vores medieplan – vi vil aldrig annoncere anderledes."</p>
+      <div class="t-author">
+        <div class="t-avatar">SR</div>
         <div>
-          <div class="quote-name">Sofie Rasmussen</div>
-          <div class="quote-role">Digital Director, Matas</div>
+          <div class="t-name">Sofie Rasmussen</div>
+          <div class="t-role">Digital Director, Matas</div>
         </div>
       </div>
     </div>
@@ -817,15 +805,15 @@
   <h2>Klar til at gå i luften?</h2>
   <p>Start gratis. Ingen kreditkort krævet.</p>
   <div class="cta-btns">
-    <a href="#" class="btn btn-white-solid btn-lg">Start gratis</a>
-    <a href="#" class="btn btn-white-outline btn-lg">Book en demo</a>
+    <a href="#" class="btn btn-primary btn-lg">Start gratis i dag</a>
+    <a href="#" class="btn btn-ghost btn-lg">Book en demo</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
-    <div class="footer-logo"><img src="podden-logo.svg" alt="Podden" style="height:36px;filter:brightness(0) invert(1);"></div>
+    <div class="footer-logo"><img src="podden-logo.svg" alt="Podden"></div>
     <div class="footer-links">
       <div class="footer-col">
         <h5>Platform</h5>
@@ -833,6 +821,7 @@
           <li><a href="#">Annoncører</a></li>
           <li><a href="#">Podcasters</a></li>
           <li><a href="#">Markedsplads</a></li>
+          <li><a href="#">Analytics</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -841,21 +830,23 @@
           <li><a href="#">Om Podden</a></li>
           <li><a href="#">Karriere</a></li>
           <li><a href="#">Blog</a></li>
+          <li><a href="#">Presse</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h5>Support</h5>
         <ul>
-          <li><a href="#">Hjælp</a></li>
+          <li><a href="#">Hjælpecenter</a></li>
           <li><a href="#">Kontakt</a></li>
-          <li><a href="#">Privatliv</a></li>
+          <li><a href="#">Privatlivspolitik</a></li>
+          <li><a href="#">Vilkår</a></li>
         </ul>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Podden ApS</span>
-    <span>Lavet i Danmark</span>
+    <span>© 2026 Podden ApS – Lavet i Danmark</span>
+    <span>CVR: 12 34 56 78</span>
   </div>
 </footer>
 
