@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 520" width="340" height="520">
+  <!-- Glow behind -->
+  <ellipse cx="170" cy="300" rx="130" ry="180" fill="rgba(79,110,247,0.08)"/>
+
+  <!-- Dress / body -->
+  <path d="M105,230 Q90,280 80,370 Q75,420 85,460 Q110,480 170,482 Q230,480 255,460 Q265,420 260,370 Q250,280 235,230 Q210,245 170,248 Q130,245 105,230Z" fill="#1a3bbf"/>
+  <!-- Dress highlight -->
+  <path d="M130,235 Q120,280 115,350 Q125,330 135,310 Q140,270 138,240Z" fill="rgba(255,255,255,0.1)"/>
+  <!-- Dress neckline -->
+  <path d="M130,228 Q150,250 170,248 Q190,250 210,228" fill="none" stroke="#1530a0" stroke-width="1.5"/>
+
+  <!-- Shoulders -->
+  <ellipse cx="105" cy="225" rx="22" ry="14" fill="#f5c5a3" transform="rotate(-15,105,225)"/>
+  <ellipse cx="235" cy="225" rx="22" ry="14" fill="#f5c5a3" transform="rotate(15,235,225)"/>
+
+  <!-- Neck -->
+  <rect x="158" y="168" width="24" height="38" rx="10" fill="#f5c5a3"/>
+
+  <!-- Head -->
+  <ellipse cx="170" cy="148" rx="52" ry="56" fill="#f5c5a3"/>
+
+  <!-- Hair -->
+  <path d="M118,130 Q115,80 150,60 Q170,52 190,60 Q225,78 225,130 Q215,100 200,95 Q185,55 170,58 Q155,55 140,95 Q125,100 118,130Z" fill="#3b2314"/>
+  <!-- Hair sides -->
+  <path d="M118,130 Q112,155 116,175 Q122,160 128,148Z" fill="#3b2314"/>
+  <path d="M222,130 Q228,155 224,175 Q218,160 212,148Z" fill="#3b2314"/>
+  <!-- Hair top flow -->
+  <path d="M140,65 Q155,58 170,58 Q185,58 200,65 Q210,72 215,85 Q200,72 170,70 Q140,72 125,85 Q130,72 140,65Z" fill="#4a2e1a"/>
+
+  <!-- Eyes -->
+  <ellipse cx="152" cy="148" rx="8" ry="8.5" fill="white"/>
+  <ellipse cx="188" cy="148" rx="8" ry="8.5" fill="white"/>
+  <ellipse cx="153" cy="149" rx="5" ry="5.5" fill="#3b2314"/>
+  <ellipse cx="189" cy="149" rx="5" ry="5.5" fill="#3b2314"/>
+  <circle cx="155" cy="147" r="1.5" fill="white"/>
+  <circle cx="191" cy="147" r="1.5" fill="white"/>
+  <!-- Eyelashes top -->
+  <path d="M144,142 Q148,139 152,140" fill="none" stroke="#3b2314" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M160,140 Q164,139 168,142" fill="none" stroke="#3b2314" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M180,142 Q184,139 188,140" fill="none" stroke="#3b2314" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M196,140 Q200,139 204,142" fill="none" stroke="#3b2314" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Eyebrows -->
+  <path d="M143,135 Q152,130 161,133" fill="none" stroke="#3b2314" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M179,133 Q188,130 197,135" fill="none" stroke="#3b2314" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Nose -->
+  <path d="M168,155 Q165,168 162,172 Q167,175 170,174 Q173,175 178,172 Q175,168 172,155Z" fill="rgba(0,0,0,0.07)"/>
+
+  <!-- Smile -->
+  <path d="M152,182 Q162,194 170,195 Q178,194 188,182" fill="none" stroke="#c0725a" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Teeth -->
+  <path d="M155,184 Q162,192 170,193 Q178,192 185,184" fill="white" stroke="none"/>
+  <path d="M155,184 Q162,192 170,193 Q178,192 185,184 Q178,186 170,187 Q162,186 155,184Z" fill="white"/>
+
+  <!-- Cheek blush -->
+  <ellipse cx="138" cy="175" rx="14" ry="9" fill="rgba(255,150,130,0.2)"/>
+  <ellipse cx="202" cy="175" rx="14" ry="9" fill="rgba(255,150,130,0.2)"/>
+
+  <!-- Headphone band -->
+  <path d="M118,148 Q118,90 170,85 Q222,90 222,148" fill="none" stroke="#1a1a2e" stroke-width="10" stroke-linecap="round"/>
+  <!-- Headphone band highlight -->
+  <path d="M121,145 Q121,95 170,88 Q219,95 219,145" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Left ear cup -->
+  <ellipse cx="113" cy="152" rx="16" ry="20" fill="#1a1a2e"/>
+  <ellipse cx="113" cy="152" rx="10" ry="13" fill="#2a2a4e"/>
+  <ellipse cx="113" cy="152" rx="5" ry="6" fill="#3a3a6e"/>
+
+  <!-- Right ear cup -->
+  <ellipse cx="227" cy="152" rx="16" ry="20" fill="#1a1a2e"/>
+  <ellipse cx="227" cy="152" rx="10" ry="13" fill="#2a2a4e"/>
+  <ellipse cx="227" cy="152" rx="5" ry="6" fill="#3a3a6e"/>
+
+  <!-- Arms -->
+  <path d="M108,232 Q88,270 82,310 Q88,315 100,310 Q108,275 122,242Z" fill="#f5c5a3"/>
+  <path d="M232,232 Q252,270 258,310 Q252,315 240,310 Q232,275 218,242Z" fill="#f5c5a3"/>
+
+  <!-- Hands -->
+  <ellipse cx="90" cy="316" rx="12" ry="10" fill="#f5c5a3"/>
+  <ellipse cx="250" cy="316" rx="12" ry="10" fill="#f5c5a3"/>
+
+  <!-- Sound wave detail on dress -->
+  <g opacity="0.25" transform="translate(145, 310)">
+    <rect x="0" y="8" width="6" height="14" rx="3" fill="white"/>
+    <rect x="10" y="4" width="6" height="22" rx="3" fill="white"/>
+    <rect x="20" y="0" width="6" height="30" rx="3" fill="white"/>
+    <rect x="30" y="4" width="6" height="22" rx="3" fill="white"/>
+    <rect x="40" y="8" width="6" height="14" rx="3" fill="white"/>
+  </g>
+</svg>

@@ -88,8 +88,28 @@
 
     /* ── HERO ── */
     .hero {
-      padding: 100px 5% 40px;
-      max-width: 900px;
+      padding: 80px 5% 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      max-width: 100%;
+    }
+    .hero-text { max-width: 560px; flex-shrink: 0; }
+    .hero-image {
+      flex-shrink: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .hero-image img {
+      height: 480px;
+      width: auto;
+      filter: drop-shadow(0 20px 60px rgba(79,110,247,0.25));
+    }
+    @media (max-width: 900px) {
+      .hero { flex-direction: column; text-align: center; }
+      .hero-image img { height: 320px; }
     }
 
     .hero-badge {
@@ -566,8 +586,13 @@
 
 <!-- HERO -->
 <div class="hero">
-  <h1>Din succes er<br>vores <span class="highlight">mission</span></h1>
-  <p>Vi tager din indtjening lige så seriøst som du tager din podcast.</p>
+  <div class="hero-text">
+    <h1>Din succes er<br>vores <span class="highlight">mission</span></h1>
+    <p>Vi tager din indtjening lige så seriøst som du tager din podcast.</p>
+  </div>
+  <div class="hero-image">
+    <img src="kvinde-hoeretelefoner.svg" alt="Kvinde med høretelefoner">
+  </div>
 </div>
 
 <!-- CAROUSEL – full width -->
