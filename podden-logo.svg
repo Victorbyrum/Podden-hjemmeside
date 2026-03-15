@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 90" width="200" height="90">
+  <!-- Sound wave bars -->
+  <g fill="#3a5bd9">
+    <rect x="12" y="32" width="10" height="22" rx="5"/>
+    <rect x="27" y="22" width="10" height="32" rx="5"/>
+    <rect x="42" y="14" width="10" height="40" rx="5"/>
+    <rect x="57" y="6"  width="10" height="48" rx="5"/>
+    <rect x="72" y="2"  width="10" height="52" rx="5"/>
+    <rect x="87" y="6"  width="10" height="48" rx="5"/>
+    <rect x="102" y="14" width="10" height="40" rx="5"/>
+    <rect x="117" y="22" width="10" height="32" rx="5"/>
+    <rect x="132" y="32" width="10" height="22" rx="5"/>
+  </g>
+  <!-- PODDEN text -->
+  <text x="100" y="84" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="28" fill="#0d1b6e" text-anchor="middle" letter-spacing="3">PODDEN</text>
+</svg>
