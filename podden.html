@@ -128,22 +128,48 @@
       margin-bottom: 2.5rem;
     }
 
-    .hero-actions {
+    /* ── CAROUSEL ── */
+    .carousel-wrapper {
+      margin-top: 3rem;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+    .carousel-track {
       display: flex;
       gap: 1rem;
-      flex-wrap: wrap;
-      align-items: center;
+      width: max-content;
+      animation: scroll-left 30s linear infinite;
     }
-
-    .trustpilot {
+    .carousel-wrapper:hover .carousel-track { animation-play-state: paused; }
+    @keyframes scroll-left {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .carousel-card {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 2.5rem;
+      gap: 0.75rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.65rem 1rem 0.65rem 0.65rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      flex-shrink: 0;
     }
-    .stars { color: #00b67a; font-size: 1rem; }
+    .carousel-card:hover { border-color: rgba(79,110,247,0.5); background: rgba(79,110,247,0.08); }
+    .carousel-thumb {
+      width: 44px; height: 44px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .carousel-info { line-height: 1.3; }
+    .carousel-title { font-size: 0.85rem; font-weight: 700; color: var(--white); }
+    .carousel-cat { font-size: 0.72rem; color: var(--muted); }
 
     /* ── STAT BAR ── */
     .stat-bar {
@@ -539,13 +565,31 @@
   <div class="hero-badge">🎙 Danmarks #1 podcast-platform</div>
   <h1>Din succes er<br>vores <span class="highlight">mission</span></h1>
   <p>Vi tager din indtjening lige så seriøst som du tager din podcast.</p>
-  <div class="hero-actions">
-    <a href="#" class="btn btn-primary btn-lg">Start gratis i dag</a>
-    <a href="#" class="btn btn-ghost btn-lg">Se markedspladsen</a>
-  </div>
-  <div class="trustpilot">
-    <span class="stars">★★★★★</span>
-    <span>Vurderet fremragende på Trustpilot · 4,8/5</span>
+  <div class="carousel-wrapper">
+    <div class="carousel-track">
+      <!-- Set 1 -->
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#1a2563">🏢</div><div class="carousel-info"><div class="carousel-title">Iværksætteriet</div><div class="carousel-cat">Business · 82K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#1e1a40">🧠</div><div class="carousel-info"><div class="carousel-title">Mindset DK</div><div class="carousel-cat">Personlig udvikling · 64K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#2a0f0f">🎤</div><div class="carousel-info"><div class="carousel-title">True Crime DK</div><div class="carousel-cat">Krimi · 115K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#1a2a0f">📈</div><div class="carousel-info"><div class="carousel-title">Investor Podcast</div><div class="carousel-cat">Finans · 58K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#0f1a2a">🏃</div><div class="carousel-info"><div class="carousel-title">Sund & Stærk</div><div class="carousel-cat">Sundhed · 73K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#0f2a1a">🌿</div><div class="carousel-info"><div class="carousel-title">Grøn Fremtid</div><div class="carousel-cat">Bæredygtighed · 41K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#2a1a0f">🍷</div><div class="carousel-info"><div class="carousel-title">Mad & Kultur</div><div class="carousel-cat">Livsstil · 39K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#0f2020">🔬</div><div class="carousel-info"><div class="carousel-title">Videnskab Nu</div><div class="carousel-cat">Videnskab · 47K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#1a0f2a">🎮</div><div class="carousel-info"><div class="carousel-title">Game On DK</div><div class="carousel-cat">Gaming · 52K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#2a2a0f">🎵</div><div class="carousel-info"><div class="carousel-title">Musikmagasinet</div><div class="carousel-cat">Musik · 31K lyttere</div></div></div>
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#1a2563">🏢</div><div class="carousel-info"><div class="carousel-title">Iværksætteriet</div><div class="carousel-cat">Business · 82K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#1e1a40">🧠</div><div class="carousel-info"><div class="carousel-title">Mindset DK</div><div class="carousel-cat">Personlig udvikling · 64K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#2a0f0f">🎤</div><div class="carousel-info"><div class="carousel-title">True Crime DK</div><div class="carousel-cat">Krimi · 115K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#1a2a0f">📈</div><div class="carousel-info"><div class="carousel-title">Investor Podcast</div><div class="carousel-cat">Finans · 58K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#0f1a2a">🏃</div><div class="carousel-info"><div class="carousel-title">Sund & Stærk</div><div class="carousel-cat">Sundhed · 73K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#0f2a1a">🌿</div><div class="carousel-info"><div class="carousel-title">Grøn Fremtid</div><div class="carousel-cat">Bæredygtighed · 41K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#2a1a0f">🍷</div><div class="carousel-info"><div class="carousel-title">Mad & Kultur</div><div class="carousel-cat">Livsstil · 39K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#0f2020">🔬</div><div class="carousel-info"><div class="carousel-title">Videnskab Nu</div><div class="carousel-cat">Videnskab · 47K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#1a0f2a">🎮</div><div class="carousel-info"><div class="carousel-title">Game On DK</div><div class="carousel-cat">Gaming · 52K lyttere</div></div></div>
+      <div class="carousel-card"><div class="carousel-thumb" style="background:#2a2a0f">🎵</div><div class="carousel-info"><div class="carousel-title">Musikmagasinet</div><div class="carousel-cat">Musik · 31K lyttere</div></div></div>
+    </div>
   </div>
 </div>
 
