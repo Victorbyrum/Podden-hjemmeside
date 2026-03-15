@@ -130,10 +130,14 @@
 
     /* ── CAROUSEL ── */
     .carousel-wrapper {
-      margin-top: 3rem;
+      width: 100%;
+      padding: 2.5rem 0;
       overflow: hidden;
-      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
     }
     .carousel-track {
       display: flex;
@@ -565,8 +569,11 @@
   <div class="hero-badge">🎙 Danmarks #1 podcast-platform</div>
   <h1>Din succes er<br>vores <span class="highlight">mission</span></h1>
   <p>Vi tager din indtjening lige så seriøst som du tager din podcast.</p>
-  <div class="carousel-wrapper">
-    <div class="carousel-track">
+</div>
+
+<!-- CAROUSEL – full width -->
+<div class="carousel-wrapper">
+  <div class="carousel-track">
       <!-- Set 1 -->
       <div class="carousel-card"><div class="carousel-thumb" style="background:#1a2563">🏢</div><div class="carousel-info"><div class="carousel-title">Iværksætteriet</div><div class="carousel-cat">Business · 82K lyttere</div></div></div>
       <div class="carousel-card"><div class="carousel-thumb" style="background:#1e1a40">🧠</div><div class="carousel-info"><div class="carousel-title">Mindset DK</div><div class="carousel-cat">Personlig udvikling · 64K lyttere</div></div></div>
@@ -589,7 +596,6 @@
       <div class="carousel-card"><div class="carousel-thumb" style="background:#0f2020">🔬</div><div class="carousel-info"><div class="carousel-title">Videnskab Nu</div><div class="carousel-cat">Videnskab · 47K lyttere</div></div></div>
       <div class="carousel-card"><div class="carousel-thumb" style="background:#1a0f2a">🎮</div><div class="carousel-info"><div class="carousel-title">Game On DK</div><div class="carousel-cat">Gaming · 52K lyttere</div></div></div>
       <div class="carousel-card"><div class="carousel-thumb" style="background:#2a2a0f">🎵</div><div class="carousel-info"><div class="carousel-title">Musikmagasinet</div><div class="carousel-cat">Musik · 31K lyttere</div></div></div>
-    </div>
   </div>
 </div>
 
