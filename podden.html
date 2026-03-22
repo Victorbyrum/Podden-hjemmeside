@@ -8,15 +8,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=Archivo+Black&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:       #07090f;
-      --bg2:      #0e1120;
-      --bg3:      #141728;
-      --accent:   #4f6ef7;
-      --accent2:  #7c94ff;
+      --bg:       #f0f5ff;
+      --bg2:      #e6edff;
+      --bg3:      #dce6ff;
+      --accent:   #1d4ed8;
+      --accent2:  #3b82f6;
       --white:    #ffffff;
-      --muted:    #8b93b0;
-      --border:   rgba(255,255,255,0.08);
-      --card-bg:  rgba(255,255,255,0.04);
+      --text:     #1e293b;
+      --muted:    #64748b;
+      --border:   rgba(29,78,216,0.12);
+      --card-bg:  rgba(255,255,255,0.7);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -24,7 +25,7 @@
     body {
       font-family: 'Archivo', sans-serif;
       background: var(--bg);
-      color: var(--white);
+      color: var(--text);
       -webkit-font-smoothing: antialiased;
     }
 
@@ -40,7 +41,7 @@
       position: sticky;
       top: 0;
       z-index: 200;
-      background: rgba(7,9,15,0.85);
+      background: rgba(240,245,255,0.92);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
@@ -58,7 +59,7 @@
       color: var(--muted);
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover { color: var(--text); }
 
     .nav-right { display: flex; gap: 0.75rem; align-items: center; }
 
@@ -83,7 +84,7 @@
       color: var(--muted);
       border: 1.5px solid var(--border);
     }
-    .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.25); }
+    .btn-ghost:hover { color: var(--text); border-color: var(--accent); }
     .btn-lg { padding: 0.85rem 2rem; font-size: 1rem; border-radius: 10px; }
 
     /* ── HERO ── */
@@ -105,7 +106,7 @@
     .hero-image img {
       height: 320px;
       width: auto;
-      filter: drop-shadow(0 20px 60px rgba(79,110,247,0.25));
+      filter: drop-shadow(0 20px 60px rgba(29,78,216,0.25));
     }
     @media (max-width: 900px) {
       .hero { flex-direction: column; text-align: center; }
@@ -116,8 +117,8 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(79,110,247,0.15);
-      border: 1px solid rgba(79,110,247,0.3);
+      background: rgba(29,78,216,0.15);
+      border: 1px solid rgba(29,78,216,0.3);
       color: var(--accent2);
       border-radius: 50px;
       padding: 0.35rem 1rem;
@@ -133,11 +134,18 @@
       line-height: 1.05;
       letter-spacing: -1.5px;
       margin-bottom: 0.75rem;
-      color: var(--white);
+      color: var(--text);
     }
 
     .hero h1 .highlight {
       color: var(--accent);
+    }
+
+    .highlight-gradient {
+      background: linear-gradient(90deg, #3b82f6, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .hero p {
@@ -183,7 +191,7 @@
       transition: border-color 0.2s, background 0.2s;
       flex-shrink: 0;
     }
-    .carousel-card:hover { border-color: rgba(79,110,247,0.5); background: rgba(79,110,247,0.08); }
+    .carousel-card:hover { border-color: rgba(29,78,216,0.5); background: rgba(29,78,216,0.08); }
     .carousel-thumb {
       width: 44px; height: 44px;
       border-radius: 8px;
@@ -192,7 +200,7 @@
       flex-shrink: 0;
     }
     .carousel-info { line-height: 1.3; }
-    .carousel-title { font-size: 0.85rem; font-weight: 700; color: var(--white); }
+    .carousel-title { font-size: 0.85rem; font-weight: 700; color: var(--text); }
     .carousel-cat { font-size: 0.72rem; color: var(--muted); }
 
     /* ── STAT BAR ── */
@@ -212,7 +220,7 @@
       font-family: 'Archivo Black', sans-serif;
       font-size: 2.6rem;
       letter-spacing: -1px;
-      color: var(--white);
+      color: var(--text);
     }
     .stat-desc {
       font-size: 0.85rem;
@@ -265,6 +273,7 @@
       letter-spacing: -1px;
       line-height: 1.1;
       margin-bottom: 0.75rem;
+      color: var(--text);
     }
 
     .section-sub {
@@ -304,6 +313,7 @@
       font-size: 1.05rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
+      color: var(--text);
     }
     .step p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
 
@@ -333,13 +343,13 @@
     .feat-card:hover { background: #1a2040; }
     .feat-card-icon {
       width: 48px; height: 48px;
-      background: rgba(79,110,247,0.15);
+      background: rgba(29,78,216,0.15);
       border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.4rem;
       margin-bottom: 1.5rem;
     }
-    .feat-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .feat-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text); }
     .feat-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
 
     /* ── PODCASTS ── */
@@ -367,7 +377,7 @@
     }
     .podcast-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(79,110,247,0.4);
+      border-color: rgba(29,78,216,0.4);
     }
     .podcast-thumb {
       height: 120px;
@@ -375,7 +385,7 @@
       font-size: 2.5rem;
     }
     .podcast-info { padding: 1rem; }
-    .podcast-info h4 { font-size: 0.85rem; font-weight: 700; }
+    .podcast-info h4 { font-size: 0.85rem; font-weight: 700; color: var(--text); }
     .podcast-cat { font-size: 0.73rem; color: var(--muted); margin-top: 3px; }
     .podcast-count { font-size: 0.72rem; color: var(--accent2); font-weight: 600; margin-top: 6px; }
 
@@ -397,7 +407,7 @@
       position: relative;
       transition: border-color 0.2s;
     }
-    .price-card:hover { border-color: rgba(79,110,247,0.4); }
+    .price-card:hover { border-color: rgba(29,78,216,0.4); }
     .price-card.featured {
       background: var(--accent);
       border-color: var(--accent);
@@ -471,7 +481,7 @@
       padding: 2rem;
     }
     .t-stars { color: #00b67a; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1.25rem; }
-    .t-text { font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; }
+    .t-text { font-size: 0.95rem; line-height: 1.7; color: var(--text); margin-bottom: 1.5rem; }
     .t-author { display: flex; align-items: center; gap: 0.75rem; }
     .t-avatar {
       width: 40px; height: 40px;
@@ -480,12 +490,12 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 0.8rem; font-weight: 800;
     }
-    .t-name { font-size: 0.875rem; font-weight: 700; }
+    .t-name { font-size: 0.875rem; font-weight: 700; color: var(--text); }
     .t-role { font-size: 0.775rem; color: var(--muted); }
 
     /* ── CTA BANNER ── */
     .cta-section {
-      background: linear-gradient(135deg, #1a2a6e 0%, #0f1a55 50%, #07090f 100%);
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 50%, #1e3a8a 100%);
       text-align: center;
       padding: 130px 5%;
       position: relative;
@@ -497,7 +507,7 @@
       top: -150px; left: 50%;
       transform: translateX(-50%);
       width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(79,110,247,0.18) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(29,78,216,0.18) 0%, transparent 65%);
       pointer-events: none;
     }
     .cta-section h2 {
@@ -513,7 +523,7 @@
 
     /* ── FOOTER ── */
     footer {
-      background: #030508;
+      background: #dce6ff;
       padding: 4rem 5% 2.5rem;
       border-top: 1px solid var(--border);
     }
@@ -531,24 +541,187 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      color: rgba(255,255,255,0.5);
+      color: var(--muted);
       margin-bottom: 1.1rem;
     }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
-    .footer-col a { font-size: 0.875rem; color: rgba(255,255,255,0.35); transition: color 0.15s; }
-    .footer-col a:hover { color: var(--white); }
+    .footer-col a { font-size: 0.875rem; color: var(--muted); transition: color 0.15s; }
+    .footer-col a:hover { color: var(--text); }
     .footer-bottom {
       border-top: 1px solid var(--border);
       padding-top: 2rem;
       display: flex;
       justify-content: space-between;
       font-size: 0.8rem;
-      color: rgba(255,255,255,0.25);
+      color: var(--muted);
       flex-wrap: wrap;
       gap: 0.5rem;
     }
 
-    /* ── RESPONSIVE ── */
+    /* ── ANIMATED BACKGROUND (Uiverse.io by ariba_9087) ── */
+  .bg-animation {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .bg-animation::before,
+  .bg-animation::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+      from 0deg,
+      #ff9aa2, #ffb7b2, #ffdac1,
+      #e2f0cb, #a2e4ff, #c9afff,
+      #ffb7b2, #ff9aa2
+    );
+    transform: translate(-50%, -50%);
+    animation: bg-rotate 8s linear infinite;
+    filter: blur(80px);
+    opacity: 0.07;
+  }
+  .bg-animation::after {
+    width: 180%;
+    height: 180%;
+    animation: bg-rotate-reverse 10s linear infinite;
+    opacity: 0.05;
+  }
+  @keyframes bg-rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  @keyframes bg-rotate-reverse {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(-360deg); }
+  }
+
+  /* ── LOADER ── */
+  #loader-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--bg2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+  }
+  #loader-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* From Uiverse.io by JkHuger */
+  .wave-menu {
+    border: 4px solid #1d4ed8;
+    border-radius: 50px;
+    width: 200px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: ease 0.2s;
+    position: relative;
+    background: #fff;
+  }
+  .wave-menu li {
+    list-style: none;
+    height: 30px;
+    width: 4px;
+    border-radius: 10px;
+    background: #1d4ed8;
+    margin: 0 6px;
+    padding: 0;
+    animation-name: wave1;
+    animation-duration: 0.3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    transition: ease 0.2s;
+  }
+  .wave-menu:hover > li { background: #fff; }
+  .wave-menu:hover { background: #1d4ed8; }
+  .wave-menu li:nth-child(2) { animation-name: wave2; animation-delay: 0.2s; }
+  .wave-menu li:nth-child(3) { animation-name: wave3; animation-delay: 0.23s; animation-duration: 0.4s; }
+  .wave-menu li:nth-child(4) { animation-name: wave4; animation-delay: 0.1s; animation-duration: 0.3s; }
+  .wave-menu li:nth-child(5) { animation-delay: 0.5s; }
+  .wave-menu li:nth-child(6) { animation-name: wave2; animation-duration: 0.5s; }
+  .wave-menu li:nth-child(8) { animation-name: wave4; animation-delay: 0.4s; animation-duration: 0.25s; }
+  .wave-menu li:nth-child(9) { animation-name: wave3; animation-delay: 0.15s; }
+  @keyframes wave1 { from { transform: scaleY(1); } to { transform: scaleY(0.5); } }
+  @keyframes wave2 { from { transform: scaleY(0.3); } to { transform: scaleY(0.6); } }
+  @keyframes wave3 { from { transform: scaleY(0.6); } to { transform: scaleY(0.8); } }
+  @keyframes wave4 { from { transform: scaleY(0.2); } to { transform: scaleY(0.5); } }
+
+  /* ── HAMBURGER ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0; right: 0;
+    background: rgba(240,245,255,0.97);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 5%;
+    z-index: 199;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--white); }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── HERO BUTTONS ── */
+  .hero-btns {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  /* ── RESPONSIVE ── */
     @media (max-width: 1000px) {
       .steps { grid-template-columns: repeat(2, 1fr); }
       .podcast-scroll { grid-template-columns: repeat(3, 1fr); }
@@ -563,10 +736,31 @@
       .stat-bar { flex-direction: column; }
       .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
       .footer-links { flex-direction: column; gap: 2rem; }
+    .hamburger { display: flex; }
+    .nav-right .btn-ghost { display: none; }
     }
   </style>
 </head>
 <body>
+
+<!-- ANIMATED BACKGROUND -->
+<div class="bg-animation"></div>
+
+<!-- LOADER -->
+<div id="loader-overlay">
+  <ul class="wave-menu">
+    <li></li><li></li><li></li><li></li><li></li>
+    <li></li><li></li><li></li><li></li>
+  </ul>
+</div>
+
+<script>
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      document.getElementById('loader-overlay').classList.add('hidden');
+    }, 600);
+  });
+</script>
 
 <!-- NAV -->
 <nav>
@@ -580,15 +774,30 @@
   </ul>
   <div class="nav-right">
     <a href="#" class="btn btn-ghost">Kontakt</a>
-    <a href="#" class="btn btn-primary">Kom i gang</a>
+    <a href="#" class="btn btn-primary">Er du podcastvært?</a>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#how">Sådan virker det</a>
+  <a href="#features">Funktioner</a>
+  <a href="#pricing">Priser</a>
+  <a href="#testimonials">Cases</a>
+  <a href="#" class="btn btn-primary" style="width:fit-content">Kom i gang</a>
+</div>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-text">
-    <h1>Din podcast.<br>Din virksomhed.<br>Vores <span class="highlight">mission.</span></h1>
-    <p>Podden maksimerer værdien af dine lyttere.</p>
+<h1>Vi sætter din<br><span class="highlight-gradient">stemme</span><br>i arbejde.</h1>
+    <p>Forbind dit brand med Danmarks mest engagerede lyttere.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn btn-primary btn-lg">Hvorfor Podden</a>
+      <a href="#how" class="btn btn-ghost btn-lg">Se hvordan det virker</a>
+    </div>
   </div>
   <div class="hero-image">
     <img src="kvinde-udklippet.png" alt="Kvinde med høretelefoner">
@@ -649,11 +858,11 @@
 </div>
 
 <!-- HOW IT WORKS -->
-<section class="how-section">
-  <div class="section-tag">Sådan virker det</div>
-  <h2>Live på 48 timer</h2>
-  <p class="section-sub">Fra oprettelse til resultater – hurtigere end du tror.</p>
-  <div class="steps">
+<section class="how-section" id="how">
+  <div class="section-tag fade-in">Sådan virker det</div>
+  <h2 class="fade-in">Live på 48 timer</h2>
+  <p class="section-sub fade-in">Fra oprettelse til resultater – hurtigere end du tror.</p>
+  <div class="steps fade-in">
     <div class="step">
       <div class="step-num">01</div>
       <div class="step-icon">📋</div>
@@ -682,15 +891,15 @@
 </section>
 
 <!-- FEATURES -->
-<section class="features-section">
+<section class="features-section" id="features">
   <div class="features-header">
     <div>
-      <div class="section-tag">Funktioner</div>
-      <h2>Alt hvad du behøver</h2>
+      <div class="section-tag fade-in">Funktioner</div>
+      <h2 class="fade-in">Alt hvad du behøver</h2>
     </div>
     <p class="section-sub">En komplet platform til annoncører og podcastere.</p>
   </div>
-  <div class="feat-grid">
+  <div class="feat-grid fade-in">
     <div class="feat-card">
       <div class="feat-card-icon">🎯</div>
       <h3>Præcis målretning</h3>
@@ -776,11 +985,11 @@
 </section>
 
 <!-- PRICING -->
-<section class="pricing-section">
-  <div class="section-tag">Priser</div>
-  <h2>Simpel prissætning</h2>
+<section class="pricing-section" id="pricing">
+  <div class="section-tag fade-in">Priser</div>
+  <h2 class="fade-in">Simpel prissætning</h2>
   <p class="section-sub" style="margin: 0 auto;">Ingen skjulte gebyrer. Start gratis, skalér når du er klar.</p>
-  <div class="pricing-grid">
+  <div class="pricing-grid fade-in">
     <div class="price-card">
       <div class="price-tier">Starter</div>
       <div class="price-amount">0 kr</div>
@@ -826,10 +1035,10 @@
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials-section">
-  <div class="section-tag">Kunderne siger</div>
-  <h2>Resultater der taler</h2>
-  <div class="testimonials-grid">
+<section class="testimonials-section" id="testimonials">
+  <div class="section-tag fade-in">Kunderne siger</div>
+  <h2 class="fade-in">Resultater der taler</h2>
+  <div class="testimonials-grid fade-in">
     <div class="testimonial-card">
       <div class="t-stars">★★★★★</div>
       <p class="t-text">"Vi tredoblet vores brand awareness på tre måneder. Podden leverede langt over forventningerne."</p>
@@ -915,6 +1124,28 @@
     <span>CVR: 12 34 56 78</span>
   </div>
 </footer>
+
+<script>
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // Hamburger menu
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
